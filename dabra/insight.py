@@ -9,12 +9,12 @@ from pathlib import Path
 class emts(object):
     def __init__(self, path2emts = None):
         if not path2emts: 
-            self.path2emts = '../../data/0409'
+            self.path2emts = '../../data/0409/'
             self.seeker_emts = self.path2emts + '/*.emt'
         else: 
             self.path2emts = path2emts
             self.seeker_emts = self.path2emts + '/**/*.emt'
-        
+            print('Check for multiple conditions... ')
         
         # self.list_emts = glob.glob(self.seeker_emts)
         self.list_emts = glob.glob(self.seeker_emts, recursive=True)
@@ -26,13 +26,49 @@ class emts(object):
         self.list_emts_stems = [x.stem for x in self.list_emts_paths]        
         return self.list_emts
     def print_emts_stems(self,):
+        self.get_emt_list()
         # [print(f' {x} ''\n') for x in self.list_emts_stems]        
         # [print(f'\item {x} ''\n') for x in self.list_emts_stems]        
         [print(f'{x} ') for x in self.list_emts_stems]        
     # def 
     def get_emt_dict(self):
         self.emt_dict = {}
+        emt_file_path = f'{self.path2emts}3D Point Tracks.emt' # :dart:: putit to conf
+        u1d_file_path = f'{self.path2emts}1D Point Tracks.emt'
+        vol_file_path = f'{self.path2emts}volume tracks.emt'
+        v1d_file_path = f'{self.path2emts}1D velocity track.emt' # :dart:: putit to conf
+        c1d_file_path = f'{self.path2emts}Scalar Cycle Sequences.emt'
+
+        df_1DU = pd.read_csv(u1d_file_path, skiprows=9, delimiter=r"\s+")
+        df_3DU = pd.read_csv(emt_file_path, skiprows=9, delimiter=r"\s+")
+        df_Vol = pd.read_csv(vol_file_path, skiprows=9, delimiter=r"\s+")
+        df_1DV  = pd.read_csv(v1d_file_path, skiprows=9, delimiter=r"\s+")
+        df_Cyc  = pd.read_csv(c1d_file_path, skiprows=7, delimiter=r"\s+")
+        
+        
+        df_Vol = df_Vol.dropna(axis = 1)
+        df_1DU = df_1DU.dropna(axis = 1)
+        
+        # soft preprocessing... getting rid off frame ... its in index
+        # df_.columns[2::]
+        # spravny naming columns 
+        
+        
+        self.emt_dict['3DU'] = df_3DU
+        self.emt_dict['1DU'] = df_1DU
+        self.emt_dict['1DV'] = df_1DV
+        self.emt_dict['Vol'] = df_Vol
+        self.emt_dict['Cyc'] = df_Cyc
+        
+        def get_emt_support_summary(self):
+            self.emt_summary_dict = {}
+            pass
+        
+        return self.emt_dict
+    def overview_plotting(self,):
+        # for self.emt_dict
         pass
+    
     
 def scatter3d_matplot(dataframe_):
     fig = plt.figure()
