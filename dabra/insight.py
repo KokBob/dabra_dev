@@ -38,16 +38,38 @@ class emts(object):
         vol_file_path = f'{self.path2emts}volume tracks.emt'
         v1d_file_path = f'{self.path2emts}1D velocity track.emt' # :dart:: putit to conf
         c1d_file_path = f'{self.path2emts}Scalar Cycle Sequences.emt'
-
-        df_1DU = pd.read_csv(u1d_file_path, skiprows=9, delimiter=r"\s+")
+        scl_file_path = f'{self.path2emts}Scalar Tracks.emt'
+        
+    
+        
         df_3DU = pd.read_csv(emt_file_path, skiprows=9, delimiter=r"\s+")
-        df_Vol = pd.read_csv(vol_file_path, skiprows=9, delimiter=r"\s+")
-        df_1DV  = pd.read_csv(v1d_file_path, skiprows=9, delimiter=r"\s+")
-        df_Cyc  = pd.read_csv(c1d_file_path, skiprows=7, delimiter=r"\s+")
+        df_scl = pd.read_csv(scl_file_path, skiprows=9, delimiter=r"\s+")
         
+        try:
+            df_Vol = pd.read_csv(vol_file_path, skiprows=9, delimiter=r"\s+")
+        except:
+            df_Vol = pd.DataFrame()
+        try:
+            df_1DU = pd.read_csv(u1d_file_path, skiprows=9, delimiter=r"\s+")
+        except:
+            df_1DU = pd.DataFrame()
         
-        df_Vol = df_Vol.dropna(axis = 1)
+        try:
+            df_1DV  = pd.read_csv(v1d_file_path, skiprows=9, delimiter=r"\s+")
+        except: 
+            df_1DV  = pd.DataFrame()
+            
+        try:
+           df_Cyc  = pd.read_csv(c1d_file_path, skiprows=7, delimiter=r"\s+")
+        except:
+           df_Cyc  = pd.DataFrame()
+        
+        # df_3DU = df_3DU.dropna(axis = 0) correct ??
+        # df_3DU = df_3DU.dropna(axis = 1) 
+        # df_3DU = df_3DU.dropna(axis = 1) 
+        
         df_1DU = df_1DU.dropna(axis = 1)
+        df_Vol = df_Vol.dropna(axis = 1)
         
         # soft preprocessing... getting rid off frame ... its in index
         # df_.columns[2::]
@@ -55,10 +77,14 @@ class emts(object):
         
         
         self.emt_dict['3DU'] = df_3DU
+        self.emt_dict['Scl'] = df_scl
         self.emt_dict['1DU'] = df_1DU
         self.emt_dict['1DV'] = df_1DV
         self.emt_dict['Vol'] = df_Vol
         self.emt_dict['Cyc'] = df_Cyc
+        
+        
+        
         
         def get_emt_support_summary(self):
             self.emt_summary_dict = {}
