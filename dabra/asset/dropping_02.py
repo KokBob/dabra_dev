@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 goal to drop dabra 3D point tracks 
+show at datable 
 """
 
 from dash import Dash, dcc, html, dash_table, Input, Output, State, callback
