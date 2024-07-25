@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """
+co je tady cilem?
+k jakemu ukolu to je ? 
 https://www.youtube.com/watch?v=RCUrpCpGZ5o&t=1156s
 https://www.youtube.com/watch?v=-Mx89Jcn2E4&list=PLh3I780jNsiTXlWYiNWjq2rBgg3UsL1Ub&index=5
 stav: nejaky erro v dashi, neprehava tak jak je treba
