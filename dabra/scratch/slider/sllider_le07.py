@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-
 stav: nejaky erro v dashi, neprehava tak jak je treba
 https://www.youtube.com/playlist?list=PLh3I780jNsiTXlWYiNWjq2rBgg3UsL1Ub
 https://community.plotly.com/t/slider-with-play-button-for-animations-independent-of-plotly/53188
@@ -13,13 +12,14 @@ https://stackoverflow.com/questions/71906091/python-plotly-dash-automatically-it
 #******* CLEANED AND CLOSED *******
 from dash import Dash, dcc, html, Input, Output, callback, dash_table, State
 import glob, os, yaml, sys
-sys.path.append("..") 
+# sys.path.append("..") 
 sys.path.append("../..") 
+sys.path.append("../../..") 
 from dabra import insight
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-emt_file_path = '../../dabra/data/0409/3D point tracks.emt' # :dart:: putit to conf
+emt_file_path = '../../../dabra/data/0409/3D point tracks.emt' # :dart:: putit to conf
 df0 = pd.read_csv(emt_file_path, skiprows=9, delimiter=r"\s+")
 # df = df0.iloc[:,2:] # puvodni
 df = df0.iloc[300,2:]
