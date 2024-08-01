@@ -27,7 +27,11 @@ import math
 import copy
 sys.path.append("..") 
 sys.path.append("../..") 
-# %% 
+# %% put full directory 
+# report on what has been put 
+# press button consolidate and save essential 3D tracks
+# process waves 
+# show volumes 
 # a = athlete
 # condition_ = ''
 # ins['a'] = insight.emts(path2emts = '../../data/0409/')
@@ -85,9 +89,7 @@ for _ in ins:
     # i+=1
     # plt.tight_layout()
 # plt.tight_layout()
-# %%
-
-# %%
+#%% 
 plt.plot(y_df)
 y_scl_df.plot()
 y_vol_df.plot()
@@ -114,6 +116,7 @@ plt.plot(pd.DataFrame(y_a1))
 # %%
 
 num_plts = 3
+
 plt.subplot(num_plts, 1, 1) # 
 plt.imshow(X_all.T)
 plt.subplot(num_plts, 1, 2) # 
