@@ -15,6 +15,8 @@ import math
 import shutil
 import glob
 import os, sys
+sys.path.append("..") 
+sys.path.append("../..") 
 import matplotlib.pyplot as plt
 # plt.style.use('dark_background')
 # plt.style.use('default')
@@ -27,8 +29,7 @@ import torch.utils.data as data
 import math
 import copy
 import torch as th
-sys.path.append("..") 
-sys.path.append("../..") 
+
 # %% load data
 X_raw = pd.read_csv('../data_prep/Xr.csv').iloc[::,2:]
 y_raw = pd.read_csv('../data_prep/yr.csv').iloc[::,1:]

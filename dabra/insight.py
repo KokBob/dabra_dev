@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import c3d
+# import c3d
 import pandas as pd 
 import matplotlib.pyplot as plt
 import numpy as np

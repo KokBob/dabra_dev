@@ -18,6 +18,14 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
+    
+    dcc.Markdown('''
+        ## LaTeX in a Markdown component:
+    
+        This app has function to see 3D tracks to furher explore possibility \
+            on movements.
+    
+        ''', mathjax=True),
     dcc.Upload(
         id='upload-data',
         children=html.Div([

@@ -22,7 +22,7 @@ from dabra import insight
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-emt_file_path = '../../dabra/data/0409/3D point tracks.emt' # :dart:: putit to conf
+emt_file_path = './../dabra/data/3DpointTracks.emt' # :dart:: putit to conf
 df0 = pd.read_csv(emt_file_path, skiprows=9, delimiter=r"\s+")
 # df = df0.iloc[:,2:] # puvodni
 df = df0.iloc[300,2:]
